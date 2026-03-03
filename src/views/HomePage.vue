@@ -12,7 +12,9 @@ const spin = () => {
 </script>
 
 <template>
-  <main class="flex flex-1 items-center justify-center">
+  <main
+    class="min-h-screen bg-[radial-gradient(circle_at_15%_20%,#334155,transparent_40%),radial-gradient(circle_at_85%_80%,#1e293b,transparent_40%)] p-6"
+  >
     <div class="mx-auto max-w-7xl">
       <header class="mb-8">
         <p class="text-sx font-semibold tracking-[0.3em] text-cyan-300 uppercase">Project #4</p>
