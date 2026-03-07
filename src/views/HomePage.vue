@@ -1,26 +1,21 @@
 <script setup>
+import { computed } from 'vue'
 import AnimeCard from '@/components/AnimeCard.vue'
-import { ref } from 'vue'
+import { useAnimeRoulette } from '@/composables/useAnimeRoulette'
 
-const loading = ref(false)
-const error = ref('')
-
-const spin = () => {
-  if (error.value.length > 0) error.value = ''
-  else error.value = 'Something wrong'
-}
+const { anime, loading, error, spin, cooldownleft } = useAnimeRoulette()
 </script>
 
 <template>
   <main
-    class="min-h-screen bg-[radial-gradient(circle_at_15%_20%,#334155,transparent_40%),radial-gradient(circle_at_85%_80%,#1e293b,transparent_40%)] p-6"
+    class="min-h-screen bg-[radial-gradient(circle_at_15%_20%,#334155,transparent_40%),radial-gradient(circle_at_85%_0%,#0f766e,transparent_28%),linear-gradient(160deg,#020617,#0f172a,#111827)] px-4 py-8 text-slate-100 sm:px-6 lg:px-8"
   >
     <div class="mx-auto max-w-7xl">
       <header class="mb-8">
-        <p class="text-sx font-semibold tracking-[0.3em] text-cyan-300 uppercase">Project #4</p>
-        <h1 class="- mt-2 text-4xl font-black text-white sm:text-5xl">Anime Roulette Watchlist</h1>
-        <p class="mt-2 max-w-3xl text-slate-300 sm:text-base">
-          Spin the wheel, request a random anime from Jikan with VueUse useFech, and learn how REST
+        <p class="text-xs font-semibold tracking-[0.3em] text-cyan-300/90 uppercase">Project #4</p>
+        <h1 class="mt-2 text-4xl font-black text-white sm:text-5xl">Anime Roulette Machine</h1>
+        <p class="mt-2 max-w-3xl text-sm text-slate-300 sm:text-base">
+          Spin the reel, request a random anime from Jinkan with VueUse useFech, and learnhow REST
           APIs signal rate limiting with HTTP 429.
         </p>
       </header>
@@ -49,6 +44,7 @@ const spin = () => {
           <AnimeCard
             :loading="loading"
             :error="error"
+            :anime="anime"
           />
         </section>
       </div>
