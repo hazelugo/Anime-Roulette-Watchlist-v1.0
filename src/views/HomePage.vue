@@ -2,6 +2,7 @@
 import { computed } from 'vue'
 import AnimeCard from '@/components/AnimeCard.vue'
 import { useAnimeRoulette } from '@/composables/useAnimeRoulette'
+import Watchlist from '@/components/Watchlist.vue'
 
 const { anime, loading, error, spin, cooldownLeft } = useAnimeRoulette()
 
@@ -68,6 +69,7 @@ const spinLabel = computed(() => {
             :anime="anime"
           />
         </section>
+        <Watchlist />
       </div>
     </div>
   </main>
